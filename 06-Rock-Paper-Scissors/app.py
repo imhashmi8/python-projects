@@ -1,4 +1,5 @@
 import random
+
 rock = '''
     _______
 ---'   ____)
@@ -26,31 +27,23 @@ scissors = '''
 ---.__(___)
 '''
 
-user_input = int(input('What do you choose? Type "0" for Rock, "1" for Paper or "2" for Scissors.\n'))
-if user_input == 0:
-    print('You chose: "Rock"')
-elif user_input == 1:
-    print('You chose: "Paper"')
-elif user_input == 2:
-    print('You chose: "Scissors"')
-game_option = [rock, paper, scissors]
-print(game_option[user_input])
+game_images = [rock, paper, scissors]
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
 
-computer_input = random.randint(0, 2)
-if computer_input == 0:
-    print('Computer chose: "Rock"')
-elif computer_input == 1:
-    print('Computer chose: "Paper"')
-elif computer_input == 2:
-    print('Computer chose: "Scissors"')
+if 0 <= user_choice <= 2:
+    print(game_images[user_choice])
+    computer_choice= random.randint(0,2)
+    print("Computer Choice :")
+    print(game_images[computer_choice])
 
-print(game_option[computer_input])
+    if user_choice == computer_choice:
+        print("Match Draw")
+    elif (user_choice == 0 and computer_choice == 2) or \
+            (user_choice == 1 and computer_choice == 0) or \
+            (user_choice == 2 and computer_choice == 1):
+        print("You win!")
+    else:
+        print("You Lose!")
 
-if user_input == computer_input:
-    print("It's a draw!")
-elif (user_input == 0 and computer_input == 2) or \
-     (user_input == 2 and computer_input == 1) or \
-     (user_input == 1 and computer_input == 0):
-    print("You Win!")
 else:
-    print("You Lose!")
+    print("You Entered a in-valid number!")
